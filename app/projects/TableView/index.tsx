@@ -1,5 +1,6 @@
 import { useAppSelector } from '@/app/redux';
 import Header from '@/components/Header';
+import { dataGridClassNames, dataGridSxStyles } from '@/lib/utils';
 import { useGetTasksQuery } from '@/state/api';
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import React from 'react';
@@ -79,9 +80,10 @@ const TableView = ({id, setIsModalNewTaskOpen}: Props) => {
         <div className='pt-5'>
             <Header name="Table" isSmallText />
         </div>
-        <DataGrid
-            rows={tasks || []}
+        <DataGrid rows={tasks || []}
             columns={columns}
+            className={dataGridClassNames}
+            sx={dataGridSxStyles(isDarkMode)}
         />    
     </div>;
 };
